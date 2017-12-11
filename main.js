@@ -10,7 +10,7 @@ window.onload = function() {
         selector: 'input[name=search-text]',
         minChars: 3,
         source: function(term, suggest) {
-            xhrs.open('GET', '/autocomplete.json?name=' + term, false);
+            xhrs.open('GET', 'https://korpatov.github.io/jsonp/autocomplete.json?name=' + term, false);
             xhrs.onload = function() {
                 var suggestions = [];
                 if (xhrs.status != 200 || xhrs.responseText.length == "") {
