@@ -10,7 +10,7 @@ window.onload = function() {
         selector: 'input[name=search-text]',
         minChars: 3,
         source: function(term, suggest) {
-            xhrs.open('GET', 'https://korpatov.github.io/jsonp/autocomplete.json?name=' + term, false);
+            xhrs.open('GET', 'autocomplete.json?name=' + term, false);
             xhrs.onload = function() {
                 var suggestions = [];
                 if (xhrs.status != 200 || xhrs.responseText.length == "") {
@@ -18,7 +18,7 @@ window.onload = function() {
                 }
                 result = JSON.parse(xhrs.responseText)
                 for (i=0; i<result.title_ru.length; i++) {
-                    if (/sil\-/i.test(iframe_url[i]) == false) {
+                    if ((result.iframe_url[i]) == false) {
                         continue;
                     }
                     suggestions.push({
@@ -51,12 +51,6 @@ window.onload = function() {
 	Init();
 };
 
-$.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return decodeURI(results[1]) || 0;
-    }
-};
+  
+
+   
